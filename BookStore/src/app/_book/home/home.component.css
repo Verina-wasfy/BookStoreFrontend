@@ -1,0 +1,36 @@
+.coverPic{
+  /* background-image: url('E:\Udacity\BookstoreFrontend\BookStore\src\assets\7204.jpg'); */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width:100%;
+    position: relative;
+  text-align: center;
+  color: white;
+}
+.data
+{
+   position: absolute;
+  top: 40%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  /* text-align: center; */
+  /* color: blue; */
+}
+.title{
+  font-size: 50px;
+  font-weight: 500;
+  color:rgb(47, 47, 129);
+}
+.allBooks{
+  margin-top: 50%;
+  /* top: 30%; */
+  color: white;
+  font-size: 20px;
+  border-radius: 15%;
+  border-style: none;
+  height: 50px;
+  width:70%;
+  background-color: rgb(50, 50, 173);
+}
