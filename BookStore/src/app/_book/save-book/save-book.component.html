@@ -1,4 +1,4 @@
-<form class="dialogBox" [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm)">
+<form class="dialogBox" [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm)"style=" margin-top: 7%;">
   <div class="times">
     <button class="fas fa-times" mat-button (click)="onNoClick()">Close</button>
   </div>
@@ -162,13 +162,13 @@
   <div class="row px-4">
     <div class="col-md-6">
 
-      <label for="publicationDate" class="form-label">Publication Date</label>
+      <label for="publicationDate" class="form-label" placeholder="Pick a date">Publication Date</label>
      <mat-form-field class="dInput"  floatLabel='never'>
             <input matInput
               [matDatepicker]="publicationDate"
               formControlName="publicationDate">
             <mat-datepicker-toggle matSuffix [for]="publicationDate"></mat-datepicker-toggle>
-            <mat-datepicker #publicationDate></mat-datepicker>
+            <mat-datepicker #publicationDate ></mat-datepicker>
           </mat-form-field>
       <div
         *ngIf="
@@ -222,6 +222,27 @@
         class="error-input"
       >
         <div *ngIf="getControl('langID').errors?.required">
+          This field is required
+        </div>
+      </div>
+    </div>
+
+     <div class="col-md-6">
+      <label for="authID" class="form-label">Author</label>
+      <mat-select
+        class="form-control"
+        id="authID"
+        formControlName="authID"
+      >
+        <mat-option *ngFor="let item of auths" [value]="item.authorID">{{ item.authName }}</mat-option>
+      </mat-select>
+      <div
+        *ngIf="
+          getControl('authID').touched && getControl('authID').invalid
+        "
+        class="error-input"
+      >
+        <div *ngIf="getControl('authID').errors?.required">
           This field is required
         </div>
       </div>
