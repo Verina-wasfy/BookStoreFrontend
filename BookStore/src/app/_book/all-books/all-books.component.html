@@ -1,4 +1,81 @@
 <app-nav-bar></app-nav-bar>
+<div class="con" style="height: 70%; margin-top: 8%; overflow: hidden">
+  <div class="p-5 pt-0">
+    <div>
+      <div class="row m-0 mb-2 justify-content-md-center">
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="col-3">
+          <button class="k-btn">Add Book</button>
+        </div>
+      </div>
+    </div>
+    <div class="mat-elevation-z8">
+      <div class="table-container">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id_number</th>
+            <td mat-cell *matCellDef="let row">{{ row.bookId }}</td>
+          </ng-container>
 
-<p>all-books works!</p>
+          <!-- name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Book Name</th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.title}}
+            </td>
+          </ng-container>
+
+          <!-- Id number column-->
+          <ng-container matColumnDef="avgRating">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Average Rating
+            </th>
+            <td mat-cell *matCellDef="let row">{{row.avgRating}}</td>
+          </ng-container>
+
+          <!-- noSeats Column -->
+          <ng-container matColumnDef="iSBN">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ISBN</th>
+            <td mat-cell *matCellDef="let row">{{row.isbn}}</td>
+          </ng-container>
+
+          <!-- plates Column -->
+          <ng-container matColumnDef="publisher">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Publisher</th>
+            <td mat-cell *matCellDef="let row">{{row.publisherName}}</td>
+          </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+            <td mat-cell *matCellDef="let row">
+              <span class="pe-2">
+                <i class="far fa-edit text-success"></i>
+              </span>
+              <span class="pe-2">
+                <i class="far fa-trash-alt text-danger"></i>
+              </span>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          <!-- Row shown when there is no matching data. -->
+        </table>
+      </div>
+      <!-- <mat-paginator [length]="length"
+    [pageSize]="pageSize"
+    (page)="pageEvent = $event"
+    aria-label="Select page">
+</mat-paginator> -->
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of users"
+      ></mat-paginator>
+    </div>
+  </div>
+</div>
 <app-footer></app-footer>

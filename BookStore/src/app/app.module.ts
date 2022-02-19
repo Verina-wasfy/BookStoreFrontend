@@ -9,7 +9,8 @@ import { AllBooksComponent } from './_book/all-books/all-books.component';
 import { NavBarComponent } from './_shared/nav-bar/nav-bar.component';
 import { FooterComponent } from './_shared/footer/footer.component';
 import { NotFoundComponent } from './_shared/not-found/not-found.component';
-
+import { DetailsComponent } from './_book/details/details.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,13 +18,15 @@ import { NotFoundComponent } from './_shared/not-found/not-found.component';
     AllBooksComponent,
     NavBarComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

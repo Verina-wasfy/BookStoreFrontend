@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+  }
+i{
+    cursor: pointer;
+}
+th
+{
+  background-color: rgb(216, 216, 216,0.5);
+
+  color:#989898;
+  text-align: center;
+  padding-right: 15px;
+}
+.k-btn
+{
+  width:170px;
+  height: 37px;
+  float: right ;  font-size: 18px;
+  background-color: rgb(113, 113, 155);
+  border-radius: 5%;
+  border:none;
+  color: white;
+}
+.table-container {
+  max-height: calc(100vh - 155px);
+  /* // or height: calc(100vh - 155px); depending on your need  change */
+  overflow: auto;
+}
