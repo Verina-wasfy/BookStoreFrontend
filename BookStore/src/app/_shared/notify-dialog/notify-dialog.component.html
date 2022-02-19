@@ -1,0 +1,23 @@
+<div [ngClass] ="status == 1 ? 'alertSuc' :'alertFail'  ">
+    <!-- <div class="times"><i class="fas fa-times"  mat-button mat-dialog-close></i></div> -->
+
+    <div *ngIf=" status == 1; else wronIcon">
+        <i class='far fa-check-circle'></i> <br>
+
+    </div>
+    <ng-template #wronIcon>
+        <i class='fas fa-times-circle'></i> <br>
+    </ng-template>
+
+
+    <div class="message">
+         messagenslate
+    </div>
+    <div class="row mt-5">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <button type="submit" class=" btn" mat-dialog-close cdkFocusInitial>"labels.ok" </button></div>
+        <div class="col-4"></div>
+    </div>
+</div>
+

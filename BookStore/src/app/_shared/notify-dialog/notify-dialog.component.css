@@ -1,0 +1,54 @@
+/* .div-dialog{
+
+    width: 500px;
+} */
+
+  .alertSuc  button {
+      border: 1px solid #3fb54c !important;
+      color: #3fb54c;
+  }
+
+.alertSuc {
+  color: #3fb54c;
+  text-align: center;
+
+  font-size: 15px;
+  margin: auto;
+  width: 500px;
+height: 200px;
+}
+
+.alertSuc i {
+    font-size: 45px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+  /**/
+
+.alertFail  button {
+    border: 1px solid red !important;
+    color: #ed1d25;
+}
+.alertFail {
+color: red;
+text-align: center;
+font-size: 15px;
+margin: auto;
+width: 500px;
+height: 200px;
+}
+.alertFail i {
+  font-size: 45px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.btn{
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 24px;
+  border-radius: 100px;
+  width: 100%;
+  height: 100%;
+}

@@ -1,1 +1,56 @@
-<p>details works!</p>
+<form class="dialogBox">
+  <div class="times">
+    <button class="fas fa-times" mat-button mat-dialog-close>Close</button>
+  </div>
+  <h4 mat-dialog-title>Book Details</h4>
+  <hr />
+  <div>
+    <input type="number" hidden id="id" />
+  </div>
+  <div class="row px-4">
+    <div class="col-12">
+      <p for="Name" class="form-label tags">Book Name:</p>
+      <p class="data">{{ book.title }}</p>
+    </div>
+    <div class="col-md-6">
+      <p for="NameA" class="form-label tags">Publisher Name:</p>
+      <p class="data">{{book.publisherName}}</p>
+    </div>
+    <div class="col-md-6">
+      <p for="Type" class="form-label tags">Publication Date:</p>
+      <p class="data">{{book.publicationDate|date}}</p>
+    </div>
+    <div class="col-md-6">
+      <p for="Id" class="form-label tags">ISBN:</p>
+      <p class="data">{{book.isbn}}</p>
+    </div>
+     <div class="col-md-6">
+      <p for="Id" class="form-label tags">ISBN13:</p>
+      <p class="data">{{book.isbN13}}</p>
+    </div>
+    <div class="col-md-6">
+      <p for="Id" class="form-label tags">Language:</p>
+      <p class="data">{{book.bookLang[0].langName}}</p>
+    </div>
+     <div class="col-md-6">
+      <p for="Id" class="form-label tags">Number of pages:</p>
+      <p class="data">{{book.numberPages}}</p>
+    </div>
+    <div class="col-md-6">
+      <p for="Id" class="form-label tags">Average rating:</p>
+      <p class="data">{{book.avgRating}}</p>
+    </div>
+     <div class="col-md-6">
+      <p for="Id" class="form-label tags">Rating count:</p>
+      <p class="data">{{book.ratingCount}}</p>
+    </div>
+    <div class="col-md-12">
+      <p for="Id" class="form-label tags">Text reviews count:</p>
+      <p class="data">{{book.textRreviewsCount}}</p>
+    </div>
+     <div class="col-md-6" *ngFor="let item of book.bookAuth">
+      <p for="Id" class="form-label tags">Author name:</p>
+      <p class="data">{{item.authName}}</p>
+    </div>
+  </div>
+</form>

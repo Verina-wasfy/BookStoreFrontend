@@ -11,6 +11,7 @@ import { FooterComponent } from './_shared/footer/footer.component';
 import { NotFoundComponent } from './_shared/not-found/not-found.component';
 import { DetailsComponent } from './_book/details/details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NotifyDialogComponent } from './_shared/notify-dialog/notify-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     FooterComponent,
     NotFoundComponent,
-    DetailsComponent
+    DetailsComponent,
+    NotifyDialogComponent
   ],
   imports: [
     BrowserModule,
