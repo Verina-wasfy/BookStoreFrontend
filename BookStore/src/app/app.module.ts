@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotifyDialogComponent } from './_shared/notify-dialog/notify-dialog.component';
 import { ConfirmDialogComponent } from './_shared/confirm-dialog/confirm-dialog.component';
 import { SaveBookComponent } from './_book/save-book/save-book.component';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
     SaveBookComponent
   ],
   imports: [
+    MatNativeDateModule,
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,

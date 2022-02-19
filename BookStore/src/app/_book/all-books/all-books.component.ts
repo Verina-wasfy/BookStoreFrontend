@@ -97,7 +97,8 @@ const dialogRef = this.dialog.open(SaveBookComponent, {
       // console.log(result);
       if(result){
         this.addBook = result;
-        this.bookService.saveBook(this.addBook).subscribe(requestResult=>{
+        this.bookService.saveBook(this.addBook).subscribe(requestResult => {
+          debugger;
           if(requestResult == 1){
             this.dialog.open( NotifyDialogComponent , {
               data:   { message: "Book is added successfully" , status: 1}

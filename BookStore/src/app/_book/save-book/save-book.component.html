@@ -6,7 +6,7 @@
     {{ this.book.bookID == undefined ? "Add Book" : "Edit Book" }}
   </h2>
   <hr />
-  <div><input type="number" hidden id="id" /></div>
+  <div><input type="number" hidden id="bookID" /></div>
   <div class="row px-4 m-0">
     <div class="col-md-12">
       <label for="Name" class="form-label">Book Name</label>
@@ -44,27 +44,27 @@
           This field is required
         </div>
         <div *ngIf="getControl('isbn').errors?.pattern">
-          Only numbers allowed
+          Only 10 digits allowed
         </div>
       </div>
     </div>
     <div class="col-md-6">
-      <label for="isbn13" class="form-label">ISBN13</label>
+      <label for="isbN13" class="form-label">ISBN13</label>
       <input
         type="text"
         class="form-control"
-        id="isbn13"
-        formControlName="isbn13"
+        id="isbN13"
+        formControlName="isbN13"
       />
       <div
-        *ngIf="getControl('isbn13').touched && getControl('isbn13').invalid"
+        *ngIf="getControl('isbN13').touched && getControl('isbN13').invalid"
         class="error-input"
       >
-        <div *ngIf="getControl('isbn13').errors?.required">
+        <div *ngIf="getControl('isbN13').errors?.required">
           This field is required
         </div>
-        <div *ngIf="getControl('isbn13').errors?.pattern">
-          Only numbers allowed
+        <div *ngIf="getControl('isbN13').errors?.pattern">
+          Only 13 digits allowed
         </div>
       </div>
     </div>
@@ -72,18 +72,18 @@
 
   <div class="row px-4">
     <div class="col-md-6">
-      <label for="numPages" class="form-label">Number of pages</label>
+      <label for="numberPages" class="form-label">Number of pages</label>
       <input
         type="text"
         class="form-control"
-        id="numPages"
-        formControlName="numPages"
+        id="numberPages"
+        formControlName="numberPages"
       />
       <div
-        *ngIf="getControl('numPages').touched && getControl('numPages').invalid"
+        *ngIf="getControl('numberPages').touched && getControl('numberPages').invalid"
         class="error-input"
       >
-        <div *ngIf="getControl('numPages').errors?.required">
+        <div *ngIf="getControl('numberPages').errors?.required">
           This field is required
         </div>
       </div>
@@ -91,6 +91,7 @@
     <div class="col-md-6">
       <label for="avgRating" class="form-label">Average rating</label>
       <input
+
         type="text"
         class="form-control"
         id="avgRating"
@@ -108,6 +109,8 @@
         <div *ngIf="getControl('avgRating').errors?.pattern">
           Only numbers allowed
         </div>
+                <div *ngIf="getControl('avgRating').errors?.max">Maximum value is 5.00</div>
+
       </div>
     </div>
   </div>
@@ -133,23 +136,23 @@
       </div>
     </div>
     <div class="col-md-6">
-      <label for="textReviewsCount" class="form-label"
+      <label for="textRreviewsCount" class="form-label"
         >Text reviews count</label
       >
       <input
-        type="textReviewsCount"
+        type="textRreviewsCount"
         class="form-control"
-        id="textReviewsCount"
-        formControlName="textReviewsCount"
+        id="textRreviewsCount"
+        formControlName="textRreviewsCount"
       />
       <div
         *ngIf="
-          getControl('textReviewsCount').touched &&
-          getControl('textReviewsCount').invalid
+          getControl('textRreviewsCount').touched &&
+          getControl('textRreviewsCount').invalid
         "
         class="error-input"
       >
-        <div *ngIf="getControl('textReviewsCount').errors?.required">
+        <div *ngIf="getControl('textRreviewsCount').errors?.required">
           This field is required
         </div>
       </div>
@@ -158,13 +161,15 @@
 
   <div class="row px-4">
     <div class="col-md-6">
-      <label for="ratingCount" class="form-label">Publication Date</label>
-      <input
-        type="date"
-        class="form-control"
-        id="publicationDate"
-        formControlName="publicationDate"
-      />
+
+      <label for="publicationDate" class="form-label">Publication Date</label>
+     <mat-form-field class="dInput"  floatLabel='never'>
+            <input matInput
+              [matDatepicker]="publicationDate"
+              formControlName="publicationDate">
+            <mat-datepicker-toggle matSuffix [for]="publicationDate"></mat-datepicker-toggle>
+            <mat-datepicker #publicationDate></mat-datepicker>
+          </mat-form-field>
       <div
         *ngIf="
           getControl('publicationDate').touched &&

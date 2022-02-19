@@ -10,13 +10,16 @@ export class BooksEntity {
 public title?:string,
 public publisherID?:number,
 public publisherName?:string,
-public publicationDate?:Date,
+public publicationDate?:string,
 public isbn?:string,
 public isbN13?:string,
 public numberPages?:number,
 public avgRating?:number,
 public ratingCount?:number,
-public textRreviewsCount?:number,
+    public textRreviewsCount?: number,
+    public langID?: number,
+public langName?:string,
+
 
 
   ) { }
