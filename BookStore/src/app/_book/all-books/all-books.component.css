@@ -27,3 +27,21 @@ th
   /* // or height: calc(100vh - 155px); depending on your need  change */
   overflow: auto;
 }
+.edit{
+border-radius: 5px;
+border:none;
+background-color: rgb(19, 143, 19);
+color:white;
+}
+.delete{
+border-radius: 5px;
+border:none;
+background-color:  red;
+color:white;
+}
+.view{
+border-radius: 5px;
+border:none;
+background-color:  blue;
+color:white;
+}

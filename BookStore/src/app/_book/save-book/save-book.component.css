@@ -1,0 +1,28 @@
+h2{
+    color: #ed1d25;
+    text-align: center;
+}
+.times{
+    text-align: right;
+}
+i{
+    color: #ed1d25;
+}
+input{
+    border-radius: 10px;
+}
+.row{
+    margin-top: 14px;
+}
+label{
+    padding-left: 8px;
+}
+
+.error-input{
+    padding-left: 4px;
+    padding-right: 4px;
+    color: red;
+}
+::ng-deep.dialogBox{
+  height: 500px;
+}

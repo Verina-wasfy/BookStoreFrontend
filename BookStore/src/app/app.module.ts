@@ -13,6 +13,8 @@ import { DetailsComponent } from './_book/details/details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NotifyDialogComponent } from './_shared/notify-dialog/notify-dialog.component';
 import { ConfirmDialogComponent } from './_shared/confirm-dialog/confirm-dialog.component';
+import { SaveBookComponent } from './_book/save-book/save-book.component';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +25,13 @@ import { ConfirmDialogComponent } from './_shared/confirm-dialog/confirm-dialog.
     NotFoundComponent,
     DetailsComponent,
     NotifyDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    SaveBookComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     MaterialModule,
     AppRoutingModule,
     BrowserAnimationsModule,

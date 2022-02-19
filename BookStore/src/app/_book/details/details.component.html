@@ -1,6 +1,6 @@
 <form class="dialogBox">
   <div class="times">
-    <button class="fas fa-times" mat-button mat-dialog-close>Close</button>
+    <button  mat-button mat-dialog-close style="color:black">Close</button>
   </div>
   <h4 mat-dialog-title>Book Details</h4>
   <hr />
@@ -28,9 +28,9 @@
       <p for="Id" class="form-label tags">ISBN13:</p>
       <p class="data">{{book.isbN13}}</p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngFor="let item of book.bookLang ">
       <p for="Id" class="form-label tags">Language:</p>
-      <p class="data">{{book.bookLang[0].langName}}</p>
+      <p class="data">{{item.langName}}</p>
     </div>
      <div class="col-md-6">
       <p for="Id" class="form-label tags">Number of pages:</p>

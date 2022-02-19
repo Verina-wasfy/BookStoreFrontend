@@ -1,8 +1,8 @@
 export class BookLanguageEntity {
   constructor(
-    public langID ?: number,
-    public langName?: string,
-    public dML?: string,
+    public langID : number=0,
+    public langName: string="",
+    public dML: string="",
 
   ){}
 }

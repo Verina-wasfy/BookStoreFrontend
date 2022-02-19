@@ -1,5 +1,5 @@
 <app-nav-bar></app-nav-bar>
-<div class="con" style="height: 70%; margin-top: 8%; overflow: hidden">
+<div class="con" style="height: 70%; margin-top: 10%; overflow: hidden">
   <div class="p-5 pt-0">
     <div>
       <div class="row m-0 mb-2 justify-content-md-center">
@@ -7,7 +7,7 @@
         <div class="col-3"></div>
         <div class="col-3"></div>
         <div class="col-3">
-          <button class="k-btn">Add Book</button>
+          <button class="k-btn" (click)="newBook()">Add Book</button>
         </div>
       </div>
     </div>
@@ -20,44 +20,58 @@
             <td mat-cell *matCellDef="let row">{{ row.bookId }}</td>
           </ng-container>
 
-          <!-- name Column -->
+
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Book Name</th>
             <td mat-cell *matCellDef="let row">
-              {{ row.title}}
+              {{ row.title }}
             </td>
           </ng-container>
 
-          <!-- Id number column-->
+
           <ng-container matColumnDef="avgRating">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>
               Average Rating
             </th>
-            <td mat-cell *matCellDef="let row">{{row.avgRating}}</td>
+            <td mat-cell *matCellDef="let row">{{ row.avgRating }}</td>
           </ng-container>
 
-          <!-- noSeats Column -->
+
           <ng-container matColumnDef="iSBN">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>ISBN</th>
-            <td mat-cell *matCellDef="let row">{{row.isbn}}</td>
+            <td mat-cell *matCellDef="let row">{{ row.isbn }}</td>
           </ng-container>
 
-          <!-- plates Column -->
+
           <ng-container matColumnDef="publisher">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Publisher</th>
-            <td mat-cell *matCellDef="let row">{{row.publisherName}}</td>
+            <td mat-cell *matCellDef="let row">{{ row.publisherName }}</td>
           </ng-container>
 
           <!-- Action Column -->
           <ng-container matColumnDef="Action">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
             <td mat-cell *matCellDef="let row">
-
               <span class="pe-2">
-                <button  (click)="bookDetails(row)">view</button>
+                <button mat-button class="view"(click)="bookDetails(row)">view</button>
               </span>
               <span class="pe-2">
-                <button class="far fa-trash-alt text-danger" (click)="deleteBook(row.bookID)">delete</button>
+                <button
+                mat-button
+                  class="delete"
+                  (click)="deleteBook(row.bookID)"
+                >
+                  delete
+                </button>
+              </span>
+              <span class="pe-2">
+                <button
+                mat-button
+                class="edit"
+                  (click)="editBook(row)"
+                >
+                  Edit
+                </button>
               </span>
             </td>
           </ng-container>
@@ -67,11 +81,6 @@
           <!-- Row shown when there is no matching data. -->
         </table>
       </div>
-      <!-- <mat-paginator [length]="length"
-    [pageSize]="pageSize"
-    (page)="pageEvent = $event"
-    aria-label="Select page">
-</mat-paginator> -->
       <mat-paginator
         [pageSizeOptions]="[5, 10, 25, 100]"
         aria-label="Select page of users"

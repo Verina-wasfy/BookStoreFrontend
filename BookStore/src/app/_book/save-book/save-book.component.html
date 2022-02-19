@@ -1,0 +1,236 @@
+<form class="dialogBox" [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm)">
+  <div class="times">
+    <button class="fas fa-times" mat-button (click)="onNoClick()">Close</button>
+  </div>
+  <h2 mat-dialog-title>
+    {{ this.book.bookID == undefined ? "Add Book" : "Edit Book" }}
+  </h2>
+  <hr />
+  <div><input type="number" hidden id="id" /></div>
+  <div class="row px-4 m-0">
+    <div class="col-md-12">
+      <label for="Name" class="form-label">Book Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Name"
+        formControlName="title"
+      />
+      <div
+        *ngIf="getControl('title').touched && getControl('title').invalid"
+        class="error-input"
+      >
+        <div *ngIf="getControl('title').errors?.required">
+          This field is required
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row px-4">
+    <div class="col-md-6">
+      <label for="isbn" class="form-label">ISBN</label>
+      <input
+        type="text"
+        class="form-control"
+        id="isbn"
+        formControlName="isbn"
+      />
+      <div
+        *ngIf="getControl('isbn').touched && getControl('isbn').invalid"
+        class="error-input"
+      >
+        <div *ngIf="getControl('isbn').errors?.required">
+          This field is required
+        </div>
+        <div *ngIf="getControl('isbn').errors?.pattern">
+          Only numbers allowed
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="isbn13" class="form-label">ISBN13</label>
+      <input
+        type="text"
+        class="form-control"
+        id="isbn13"
+        formControlName="isbn13"
+      />
+      <div
+        *ngIf="getControl('isbn13').touched && getControl('isbn13').invalid"
+        class="error-input"
+      >
+        <div *ngIf="getControl('isbn13').errors?.required">
+          This field is required
+        </div>
+        <div *ngIf="getControl('isbn13').errors?.pattern">
+          Only numbers allowed
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row px-4">
+    <div class="col-md-6">
+      <label for="numPages" class="form-label">Number of pages</label>
+      <input
+        type="text"
+        class="form-control"
+        id="numPages"
+        formControlName="numPages"
+      />
+      <div
+        *ngIf="getControl('numPages').touched && getControl('numPages').invalid"
+        class="error-input"
+      >
+        <div *ngIf="getControl('numPages').errors?.required">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="avgRating" class="form-label">Average rating</label>
+      <input
+        type="text"
+        class="form-control"
+        id="avgRating"
+        formControlName="avgRating"
+      />
+      <div
+        *ngIf="
+          getControl('avgRating').touched && getControl('avgRating').invalid
+        "
+        class="error-input"
+      >
+        <div *ngIf="getControl('avgRating').errors?.required">
+          This field is required
+        </div>
+        <div *ngIf="getControl('avgRating').errors?.pattern">
+          Only numbers allowed
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row px-4">
+    <div class="col-md-6">
+      <label for="ratingCount" class="form-label">Rating Count</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ratingCount"
+        formControlName="ratingCount"
+      />
+      <div
+        *ngIf="
+          getControl('ratingCount').touched && getControl('ratingCount').invalid
+        "
+        class="error-input"
+      >
+        <div *ngIf="getControl('ratingCount').errors?.required">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="textReviewsCount" class="form-label"
+        >Text reviews count</label
+      >
+      <input
+        type="textReviewsCount"
+        class="form-control"
+        id="textReviewsCount"
+        formControlName="textReviewsCount"
+      />
+      <div
+        *ngIf="
+          getControl('textReviewsCount').touched &&
+          getControl('textReviewsCount').invalid
+        "
+        class="error-input"
+      >
+        <div *ngIf="getControl('textReviewsCount').errors?.required">
+          This field is required
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row px-4">
+    <div class="col-md-6">
+      <label for="ratingCount" class="form-label">Publication Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="publicationDate"
+        formControlName="publicationDate"
+      />
+      <div
+        *ngIf="
+          getControl('publicationDate').touched &&
+          getControl('publicationDate').invalid
+        "
+        class="error-input"
+      >
+        <div *ngIf="getControl('publicationDate').errors?.required">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="publisherID" class="form-label">Publisher</label>
+      <mat-select
+        class="form-control"
+        id="publisherID"
+        formControlName="publisherID"
+      >
+        <mat-option [value]="1">{{ "labels.driver" }}</mat-option>
+        <mat-option [value]="2">{{ "labels.supervisor" }}</mat-option>
+      </mat-select>
+      <!-- <input type="text"  class="form-control" id="publisherID" formControlName="publisherID"> -->
+      <div
+        *ngIf="
+          getControl('publisherID').touched && getControl('publisherID').invalid
+        "
+        class="error-input"
+      >
+        <div *ngIf="getControl('textReviewsCount').errors?.required">
+          This field is required
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="row px-4">
+    <div class="col-md-6">
+      <label for="langID" class="form-label">Language</label>
+      <mat-select
+        class="form-control"
+        id="langID"
+        formControlName="langID"
+      >
+        <mat-option [value]="4">{{ "labels.driver" }}</mat-option>
+        <mat-option [value]="5">{{ "labels.supervisor" }}</mat-option>
+      </mat-select>
+      <!-- <input type="text"  class="form-control" id="publisherID" formControlName="publisherID"> -->
+      <div
+        *ngIf="
+          getControl('publisherID').touched && getControl('publisherID').invalid
+        "
+        class="error-input"
+      >
+        <div *ngIf="getControl('textReviewsCount').errors?.required">
+          This field is required
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <button type="submit" mat-button class="k-btn" cdkFocusInitial>
+        Submit
+      </button>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</form>

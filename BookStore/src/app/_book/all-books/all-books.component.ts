@@ -7,6 +7,7 @@ import { BooksService } from 'src/app/_service/books.service';
 import { ConfirmDialogComponent } from 'src/app/_shared/confirm-dialog/confirm-dialog.component';
 import { NotifyDialogComponent } from 'src/app/_shared/notify-dialog/notify-dialog.component';
 import { DetailsComponent } from '../details/details.component';
+import { SaveBookComponent } from '../save-book/save-book.component';
 
 @Component({
   selector: 'app-all-books',
@@ -15,7 +16,7 @@ import { DetailsComponent } from '../details/details.component';
 })
 export class AllBooksComponent implements OnInit {
   books!: Array<BooksEntity>;
-
+  addBook:BooksEntity=new BooksEntity();
  displayedColumns = [ 'name', 'avgRating' , 'iSBN' ,'publisher','Action'];
   dataSource! :MatTableDataSource<BooksEntity>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -61,5 +62,54 @@ export class AllBooksComponent implements OnInit {
         })
       }
      });
+  }
+
+  editBook(book: BooksEntity) {
+ const dialogRef = this.dialog.open(SaveBookComponent , {
+      data: book
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != undefined){
+        this.addBook= result as BooksEntity;
+        this.bookService.saveBook(this.addBook).subscribe(result=>{
+        if(result == 1){
+            this.dialog.open( NotifyDialogComponent , {
+              data:  { message:  "Book is edited successfully", status: 1}
+            });
+          this.getAllBooks();
+          }else{
+            this.dialog.open( NotifyDialogComponent , {
+              data:  { message: "Something went wrong please try again" , status: 2}
+            });
+          }
+        })
+    }
+    });
+  }
+
+  newBook() {
+    // debugger;
+const dialogRef = this.dialog.open(SaveBookComponent, {
+      data: new BooksEntity()
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      // debugger;
+      // console.log(result);
+      if(result){
+        this.addBook = result;
+        this.bookService.saveBook(this.addBook).subscribe(requestResult=>{
+          if(requestResult == 1){
+            this.dialog.open( NotifyDialogComponent , {
+              data:   { message: "Book is added successfully" , status: 1}
+            });
+          this.getAllBooks();
+          }else{
+            this.dialog.open( NotifyDialogComponent , {
+              data: { message: "Something went wrong, please try agian later."    , status: 2}
+            });
+          }
+        })
+    }
+    });
   }
 }

@@ -20,11 +20,11 @@ export class BooksService {
 
  saveBook(book:BooksEntity){
 
-   return  this.http.post( this.basicURL +"Books/SaveBook" ,book);
+   return  this.http.post<number>( this.basicURL +"Books/SaveBook",book);
   }
 
   deleteBook(id:number){
-    debugger;
+    // debugger;
     return  this.http.delete( this.basicURL +"Books/DeleteBook?id="+id);
   }
 }
