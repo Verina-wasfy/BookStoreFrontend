@@ -14,17 +14,17 @@ export class BooksService {
   }
 
   getAllBooks() {
-    //return this.http.get<BooksEntity[]>(this.basicURL+"Books/Books");
-    return this.http.get<BooksEntity[]>( this.basicURL +"Books/Books",{ headers : this.headers });
+    return this.http.get<BooksEntity[]>(this.basicURL+"Books/Books");
+  //  return this.http.get<BooksEntity[]>( this.basicURL +"Books/Books",{ headers : this.headers });
   }
 
  saveBook(book:BooksEntity){
 
-   return  this.http.post( this.basicURL +"Bus/SaveBook" ,book);
+   return  this.http.post( this.basicURL +"Books/SaveBook" ,book);
   }
 
   deleteBook(id:number){
-
-    return  this.http.delete( this.basicURL +"Bus/DeleteBook?id="+id);
+    debugger;
+    return  this.http.delete( this.basicURL +"Books/DeleteBook?id="+id);
   }
 }

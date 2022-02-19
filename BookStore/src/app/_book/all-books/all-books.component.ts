@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { BooksEntity } from 'src/app/_model/books-entity';
 import { BooksService } from 'src/app/_service/books.service';
+import { ConfirmDialogComponent } from 'src/app/_shared/confirm-dialog/confirm-dialog.component';
+import { NotifyDialogComponent } from 'src/app/_shared/notify-dialog/notify-dialog.component';
 import { DetailsComponent } from '../details/details.component';
 
 @Component({
@@ -36,5 +38,28 @@ export class AllBooksComponent implements OnInit {
     const dialogRef = this.dialog.open(DetailsComponent ,{
       data: book
     });
+ }
+
+  deleteBook(id: any) {
+    // debugger;
+    const dialogRef = this.dialog.open(ConfirmDialogComponent , {
+      data:"Are you sure you want to delete this book?"
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result ==1){
+        this.bookService.deleteBook(id).subscribe(result =>{
+          if(result == 1){
+            this.dialog.open( NotifyDialogComponent , {
+              data:  { message: "The book is successfully deleted." , status: 1}
+            });
+            this.getAllBooks();
+          }else{
+            this.dialog.open( NotifyDialogComponent , {
+              data: { message: "Something went wrong, please try again." , status: 2}
+            });
+          }
+        })
+      }
+     });
   }
 }

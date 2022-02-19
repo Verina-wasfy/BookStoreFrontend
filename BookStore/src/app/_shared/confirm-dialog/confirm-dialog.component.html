@@ -1,0 +1,15 @@
+<div class="newComerDelPop dialogBox align-middle">
+
+    <!-- <div class="times"><i class="fas fa-times"  mat-button mat-dialog-close></i></div> -->
+
+    <div class="message">
+        {{message }}
+    </div>
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-3"> <button  (click)="confirmDelete()" class="k-btn okBtn" mat-dialog-close cdkFocusInitial>Submit</button></div>
+        <div class="col-3"> <button (click)="onNoClick()" class="cancelBtn " mat-dialog-close >Cancel</button></div>
+        <div class="col-3"></div>
+    </div>
+
+</div>

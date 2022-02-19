@@ -12,6 +12,7 @@ import { NotFoundComponent } from './_shared/not-found/not-found.component';
 import { DetailsComponent } from './_book/details/details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NotifyDialogComponent } from './_shared/notify-dialog/notify-dialog.component';
+import { ConfirmDialogComponent } from './_shared/confirm-dialog/confirm-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { NotifyDialogComponent } from './_shared/notify-dialog/notify-dialog.com
     FooterComponent,
     NotFoundComponent,
     DetailsComponent,
-    NotifyDialogComponent
+    NotifyDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
