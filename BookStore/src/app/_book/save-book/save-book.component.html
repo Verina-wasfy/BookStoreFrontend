@@ -184,8 +184,7 @@
         id="publisherID"
         formControlName="publisherID"
       >
-        <mat-option [value]="1">{{ "labels.driver" }}</mat-option>
-        <mat-option [value]="2">{{ "labels.supervisor" }}</mat-option>
+        <mat-option  *ngFor="let item of pubs" [value]="item.publID">{{ item.publisherName }}</mat-option>
       </mat-select>
       <!-- <input type="text"  class="form-control" id="publisherID" formControlName="publisherID"> -->
       <div
@@ -208,17 +207,16 @@
         id="langID"
         formControlName="langID"
       >
-        <mat-option [value]="4">{{ "labels.driver" }}</mat-option>
-        <mat-option [value]="5">{{ "labels.supervisor" }}</mat-option>
+        <mat-option *ngFor="let item of langs" [value]="item.langID">{{ item.langName }}</mat-option>
       </mat-select>
       <!-- <input type="text"  class="form-control" id="publisherID" formControlName="publisherID"> -->
       <div
         *ngIf="
-          getControl('publisherID').touched && getControl('publisherID').invalid
+          getControl('langID').touched && getControl('langID').invalid
         "
         class="error-input"
       >
-        <div *ngIf="getControl('textReviewsCount').errors?.required">
+        <div *ngIf="getControl('langID').errors?.required">
           This field is required
         </div>
       </div>

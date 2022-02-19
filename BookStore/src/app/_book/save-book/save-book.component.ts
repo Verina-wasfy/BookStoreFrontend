@@ -2,6 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BooksEntity } from 'src/app/_model/books-entity';
+import { PublishersEntity } from 'src/app/_model/publishers-entity';
+import { LanguagesService } from 'src/app/_service/languages.service';
+import { PublishersService } from 'src/app/_service/publishers.service';
+import { BookLanguageEntity } from 'e:/Udacity/BookstoreFrontend/BookStore/src/app/_model/book-language-entity';
 
 @Component({
   selector: 'app-save-book',
@@ -9,7 +13,10 @@ import { BooksEntity } from 'src/app/_model/books-entity';
   styleUrls: ['./save-book.component.css']
 })
 export class SaveBookComponent implements OnInit {
-   book:BooksEntity;
+  book: BooksEntity;
+  langs?:Array<BookLanguageEntity>;
+  pubs?: Array<PublishersEntity>;
+
  bookForm = new FormGroup({
     id: new FormControl(''),
     title: new FormControl('',Validators.required,),
@@ -23,9 +30,11 @@ export class SaveBookComponent implements OnInit {
     publisherID: new FormControl('',Validators.required),
     langID: new FormControl('',Validators.required),
   });
-  constructor(@Inject(MAT_DIALOG_DATA) public data: BooksEntity, private dialogRef: MatDialogRef<SaveBookComponent>) {
-    // this.bookForm.controls['langID'].setValue(0);
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: BooksEntity,
+    private dialogRef: MatDialogRef<SaveBookComponent>, private langService: LanguagesService,
+  private publishersService:PublishersService) {
+ this.getAllLangs();
+    this.getAllPubs();
     this.book = data;
     //  console.log(this.book);
     if (this.book != undefined) {
@@ -51,6 +60,21 @@ export class SaveBookComponent implements OnInit {
    // this.bookForm.controls['langID'].setValue(0);
 
   }
+  getAllLangs() {
+    this.langService.getAllLangs().subscribe(result => {
+      this.langs = result;
+      console.log(this.langs)
+    });
+  }
+
+   getAllPubs() {
+    this.publishersService.getAllPubs().subscribe(result => {
+      this.pubs = result;
+      console.log(this.pubs)
+
+    });
+  }
+
   onSubmit(form: any) {
     var avg = parseFloat(form.controls['avgRating'].value);
 
